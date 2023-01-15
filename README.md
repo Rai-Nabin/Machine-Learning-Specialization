@@ -3,7 +3,7 @@ Instructor: [Andrew Ng](https://www.andrewng.org/)
 
 There are 3 Courses in Specialization
 |S.N| Course |Topics |Completion|
-|--|--|--|:--:|
+|:--:|--|--|:--:|
 |1.  |Supervised Machine Learning: Regression and Classification  |1. Introduction to Machine Learning <br> 2. Regression with multiple input variables <br> 3. Classification|:white_large_square:|
 |2. |Advanced Learning Algorithms |1. Neural Networks <br> 2. Neural Network training <br> 3. Advice for applying machine learning <br> 4. Decision tress|:white_large_square:|
 |3. |Unsupervised Learning, Recommenders, Reinforcement Learning|1. Unsupervised Learning <br> 2. Recommender systems <br> 3. Reinforcement learning|:white_large_square:|
