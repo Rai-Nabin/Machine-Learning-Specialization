@@ -2,11 +2,12 @@
 Instructor: [Andrew Ng](https://www.andrewng.org/)
 
 There are 3 Courses in Specialization
-|S.N| Course |Topics |Completion|
-|:--:|--|--|:--:|
-|1.  |[Supervised Machine Learning: Regression and Classification](https://github.com/Rai-Nabin/Machine-Learning-Specialization/tree/main/01-Supervised%20Machine%20Learning:%20Regression%20and%20Classification)  |1. Introduction to Machine Learning <br> 2. Regression with multiple input variables <br> 3. Classification|:white_large_square:|
-|2. |Advanced Learning Algorithms |1. Neural Networks <br> 2. Neural Network training <br> 3. Advice for applying machine learning <br> 4. Decision tress|:white_large_square:|
-|3. |Unsupervised Learning, Recommenders, Reinforcement Learning|1. Unsupervised Learning <br> 2. Recommender systems <br> 3. Reinforcement learning|:white_large_square:|
+
+| S.N | Course | Topics | Note | Completion |
+| :--: | ---- | ---- | :--: | :--: |
+| 1. | Supervised Machine Learning: Regression and Classification | 1. Introduction to Machine Learning <br> 2. Regression with multiple input variables <br> 3. Classification | [link](./Course-1/README.md) | &#x2610; |
+| 2. | Advanced Learning Algorithms | 1. Neural Networks <br> 2. Neural Network training <br> 3. Advice for applying machine learning <br> 4. Decision tress | [link](./Course-2/README.md) | &#x2610; |
+| 3. | Unsupervised Learning, Recommenders, Reinforcement Learning | 1. Unsupervised Learning <br> 2. Recommender systems <br> 3. Reinforcement learning | [link](./Course-3/README.md) | &#x2610; |
 
 After completion of this course, you'll be able to: 
 >- Build machine learning models in Python using popular machine learning libraries NumPy and scikit-learn.
