@@ -35,4 +35,16 @@ Clustering algorithms aim to identify distinct structures within data. Specifica
 - Astronomical Data Analysis
 	- Astronomers employ clustering to group celestial bodies in space for analysis.
 	- This aids in understanding galaxy formations and spatial structures.
-## Anomaly Detection
+
+## K-means Intuition
+The K-means clustering algorithm is introduced as a method for partitioning unlabeled datasets into clusters based on similarities. In this example, a dataset containing 30 unlabeled training examples is plotted.
+**Initialization of Cluster Centers**
+Initially, the K-means algorithm randomly selects the positions of cluster centers. In this example, two clusters are chosen, represented by a red cross and a blue cross. The selected cluster centers are merely initial guesses and may not accurately represent the actual centers of clusters in the dataset. These random guesses serve as starting points for the clustering process.
+
+The K-means algorithm operates repeatedly two main tasks:
+1. Assign each point to its closest centroids.
+2. Recompute the centroids.
+
+![Cluster Step 1](./images/cluster-1.png)
+![Cluster Step-2](./images/cluster-2.png)
+
