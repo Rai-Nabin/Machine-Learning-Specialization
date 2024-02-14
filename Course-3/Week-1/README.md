@@ -43,8 +43,14 @@ Initially, the K-means algorithm randomly selects the positions of cluster cente
 
 The K-means algorithm operates repeatedly two main tasks:
 1. Assign each point to its closest centroids.
-2. Recompute the centroids.
+2. Move the cluster centroids.
 
 ![Cluster Step 1](./images/cluster-1.png)
+The first thing the K-means algorithm does is to decide which cluster each data point belongs to. It starts by guessing where the centers of the clusters might be. Then, for each data point, it checks if it's closer to one cluster center or the other. Based on this, each point is assigned to the closest cluster. 
 ![Cluster Step-2](./images/cluster-2.png)
 
+  
+The second step of the K-means algorithm involves updating the positions of the cluster centroids based on the average location of the data points assigned to each cluster.
+First, the algorithm calculates the average location of all the red points and moves the red cluster centroid to this new average position. Similarly, it computes the average location of all the blue points and relocates the blue cluster centroid accordingly. This process ensures that the cluster centroids accurately represent the center of their respective clusters by moving them to the average position of the data points assigned to each cluster.
+
+![Two Clusters](./images/two-clusters.png)
