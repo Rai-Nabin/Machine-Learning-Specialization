@@ -38,6 +38,7 @@ Clustering algorithms aim to identify distinct structures within data. Specifica
 
 ## K-means Intuition
 The K-means clustering algorithm is introduced as a method for partitioning unlabeled datasets into clusters based on similarities. In this example, a dataset containing 30 unlabeled training examples is plotted.
+
 **Initialization of Cluster Centers**
 Initially, the K-means algorithm randomly selects the positions of cluster centers. In this example, two clusters are chosen, represented by a red cross and a blue cross. The selected cluster centers are merely initial guesses and may not accurately represent the actual centers of clusters in the dataset. These random guesses serve as starting points for the clustering process.
 
@@ -54,3 +55,4 @@ The second step of the K-means algorithm involves updating the positions of the 
 First, the algorithm calculates the average location of all the red points and moves the red cluster centroid to this new average position. Similarly, it computes the average location of all the blue points and relocates the blue cluster centroid accordingly. This process ensures that the cluster centroids accurately represent the center of their respective clusters by moving them to the average position of the data points assigned to each cluster.
 
 ![Two Clusters](./images/two-clusters.png)
+If you  keep on repeating these two steps, you'll find that there won't be no more changes to the locations of the clusters centroids. This means that at this point the K-means clustering algorithm has converged.
