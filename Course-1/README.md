@@ -8,6 +8,6 @@ Course: [link](https://www.coursera.org/learn/machine-learning/home/info)
 
 | Week   | Topics                                                                                                                                                                | Note                       |
 | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- |
-| Week 1 | - Overview of Machine Learning <br>- Supervised vs. Unsupervised Machine Learning <br>- Regression Model <br>- Train the model with gradient descent                  | [link](./week-1/README.md) |
+| Week 1 | - Supervised vs. Unsupervised Machine Learning <br>- Regression Model <br>- Train the model with gradient descent                                                     | [link](./week-1/README.md) |
 | Week 2 | - Multiple Linear Regression <br>- Gradient Descent in practice                                                                                                       |                            |
 | Week 3 | - Classification with logistic regression <br>- Cost function for logistic regression <br>- Gradient descent for logistic regression <br>- The problem of overfitting |                            |
