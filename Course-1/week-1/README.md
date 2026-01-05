@@ -357,7 +357,7 @@ $$w = w - \alpha \frac{d}{dw} J(w,b)$$
 
 $$b = b - \alpha \frac{d}{db} J(w,b)$$
 
-	- **$=$ (Assignment Operator):** In this context, $=$ means "update the value of the variable on the left with the result of the calculation on the right" (similar to `a = a + 1` in programming).
+	**$=$ (Assignment Operator):** In this context, $=$ means "update the value of the variable on the left with the result of the calculation on the right" (similar to `a = a + 1` in programming).
 
 - Key Components of the Equation
 
