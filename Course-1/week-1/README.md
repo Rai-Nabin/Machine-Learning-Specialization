@@ -202,10 +202,314 @@ The concept is best illustrated by Arthur Samuel’s 1950s checkers program:
 
 ![Terminology](./images/08-terminology.png)
 
+#### Cost Function
 
+- The Cost Function
+
+	- The **Cost Function** is a mathematical formula used to evaluate the model's performance. Its primary role is to measure **how well the model is doing** by calculating the difference between the predicted values and the actual "right answers." 
+	- This serves as a guide to help the model "do better" by minimizing errors.
+
+- The Model Equation
+
+	- The linear regression model is expressed as a linear function:
+
+$$f_{w,b}(x) = wx + b$$
+
+- Key Terminology: Parameters
+
+	- The variables $w$ and $b$ are the **parameters** of the model. These are the "knobs" or variables that you adjust during the training process to improve accuracy.
+
+	- **$w$ (Weight):** Also known as a coefficient.
+    
+	- **$b$ (Bias):** Often referred to alongside $w$ as the parameters of the model.
+
+![Cost Function](./images/09-cost-function.png)
+
+- Key Notation
+
+	- **$x^{(i)}, y^{(i)}$**: The actual data (input and target) for the $i^{th}$ example.
+	    
+	- **$\hat{y}^{(i)}$ (y-hat)**: The **prediction** made by the model for the $i^{th}$ example ($f_{w,b}(x^{(i)})$).
+	    
+	- **$m$**: The total number of training examples.
+
+- Defining the Cost Function ($J$) 
+	- To measure how "wrong" the model is, we use the **Squared Error Cost Function**, denoted as $J(w, b)$.
+
+	The Formula:
+
+$$J(w, b) = \frac{1}{2m} \sum_{i=1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$$
+
+	- **Error:** The difference between the prediction and the actual target $(\hat{y} - y)$.
+    
+	- **Squared Error:** We square the error so that all deviations are positive and larger errors are penalized more heavily.
+    
+	- **Mean (Average):** We divide by $m$ so the cost doesn't grow simply because we added more data.
+    
+	- **The $\frac{1}{2}$ Factor:** A convention used to make future calculus (derivatives) cleaner; it does not change the optimal values of $w$ and $b$.
+
+
+![Cost Function](./images/10-cost-function.png)
+
+- The Objective
+
+	- The "best" model is the one where the cost $J(w, b)$ is at its **minimum**. 
+	- A small $J$ means the predictions are very close to the actual data, while a large $J$ means the line is a poor fit.
+
+
+#### Cost Function Intuition
+
+- The Simplified Model
+
+	To visualize the concept in 2D, the parameter $b$ is set to $0$.
+	
+	- **Equation:** $f_w(x) = wx$
+	    
+	- **Visual:** This forces the line to always pass through the **origin (0,0)**.
+	    
+	- **Goal:** Find the single value of $w$ that minimizes the cost function $J(w)$.
+
+![Cost Function Intuition](./images/11-cost-function-intuition.png)
+
+- **Perfect Fit ($w=1$):** The line passes exactly through the points $(1,1), (2,2), (3,3)$. The error is $0$, so $J(1) = 0$. This is the **minimum point** of the curve.
+    
+- **Poor Fit ($w=0.5$ or $w=0$):** The line is too flat. The gap (error) between the points and the line increases. $J(0.5) \approx 0.58$ and $J(0) \approx 2.33$.
+    
+- **Negative Slope ($w=-0.5$):** The line points the wrong way entirely, causing a massive error ($J \approx 5.25$).
+
+
+![Cost Function Intuition](./images/12-cost-function-intuition.png)
+
+The cost function $J(w)$ for linear regression forms a **bowl-shaped curve** (a parabola). The "best" version of the model is found at the very bottom of that bowl, where the cost is at its lowest possible value. In the example provided, that point is $w=1$.
+
+#### Visualizing the cost function
+
+From a Bowl to a 3D Surface
+
+- When both $w$ and $b$ are variables, the cost function $J(w, b)$ is no longer a simple 2D curve. Instead, it becomes a **3D surface**.
+
+	- **Visual Shape:** It is often described as a **3D soup bowl**, a hammock, or a dinner plate.
+	    
+	- **The Axes:** The "floor" of the plot consists of the $w$ and $b$ axes, while the **height** of the surface at any given point represents the value of the cost function $J$ for those specific parameters.
+	    
+	- **The Goal:** Just like the 2D version, we want to find the coordinates $(w, b)$ that correspond to the **lowest point** at the bottom of the bowl.
+
+![Cost Function Visualization](./images/13-cost-function-viz.png)
+
+The Contour Plot
+
+- To make the 3D surface easier to read on a 2D screen.
+
+	- **Mechanism:** Imagine taking horizontal slices of the 3D bowl. Each slice creates an oval (ellipse).
+	    
+	- **Interpretation:**
+	    
+	    - **Circles/Ovals:** Every point on a single line has the **exact same cost value ($J$)**, even though the $w$ and $b$ values are different.
+	        
+	    - **The Center:** The smallest, innermost circle represents the **minimum** of the cost function—the "bottom of the bowl."
+	        
+	    - **The Mapping:** A point far from the center represents a "bad" model (high error), while a point near the center represents a line that fits the data well.
+
+![Cost Function Visualization](./images/14-cost-function-viz.png)
+
+
+![Cost Function Visualization](./images/15-cost-function-viz.png)
 
 ---
 
 ### Train the Model with Gradient Descent
 
+#### Gradient Descent
+
+- What is Gradient Descent?
+
+	- **The Purpose:** It is a systematic, automated way to find the values of parameters (like $w$ and $b$) that result in the smallest possible cost $J$.
+	    
+	- **Versatility:** While we use it for linear regression, it can be applied to any function to find its minimum, even models with hundreds or millions of parameters (2$w_1, w_2, ... w_n$).
+
+![Gradient Descent](./images/16-gradient-descent.png)
+
+- The "Hill Climbing" (or Downhill) Analogy
+	
+	- **The Starting Point:** You begin at a random point (commonly by setting $w=0$ and $b=0$).
+	    
+	- **The Direction:** You look $360^\circ$ around you and determine which direction to take a "baby step" to go **downhill as quickly as possible**. This is mathematically known as the **direction of steepest descent**.
+	    
+	- **The Iteration:** You repeat this process—stepping, looking around, and stepping again—until you reach the bottom of a valley.
+
+![Gradient Descent](./images/17-gradient-descent.png)
+
+- Local Minima: A Key Property
+
+	- Unlike the "perfect bowl" of linear regression, more complex models (like neural networks) may have many valleys.
+
+		- **Sensitivity to Starting Points:** If you start a few steps to the right or left, you might end up in a completely different valley.
+		    
+		- **Local Minimum:** Each of these valleys is called a **local minimum**. Once the algorithm settles at the bottom of one valley, it generally cannot "jump out" to find a different, potentially deeper one.
+
+#### Implementing Gradient Descent
+
+- The Gradient Descent Algorithm
+
+	- The update rules for the parameters $w$ and $b$ are defined as:
+
+$$w = w - \alpha \frac{d}{dw} J(w,b)$$
+
+$$b = b - \alpha \frac{d}{db} J(w,b)$$
+
+	- **$=$ (Assignment Operator):** In this context, $=$ means "update the value of the variable on the left with the result of the calculation on the right" (similar to `a = a + 1` in programming).
+
+- Key Components of the Equation
+
+	- **$\alpha$ (Learning Rate):** A small positive number (e.g., $0.01$) that controls **how big of a step** you take.
+	    
+	    - Large $\alpha$: Aggressive, huge steps.
+	        
+	    - Small $\alpha$: Tiny baby steps.
+	        
+	- **$\frac{d}{dw}$ and $\frac{d}{db}$ (Derivative Terms):** These terms from calculus tell the algorithm the **direction** of the steepest descent. They determine which way to move to reduce the cost $J$ most quickly.
+	    
+	- **Convergence:** The algorithm "converges" when you reach a minimum where the values of $w$ and $b$ stop changing significantly with each step.
+    
+
+- The "Simultaneous Update" Rule
+
+	- A crucial detail in implementing gradient descent correctly is updating both parameters at the same time using the values from the _previous_ step.
+	
+	- **Correct Method (Simultaneous):**
+		
+		1. Calculate the new proposed $w$ and store it in a temporary variable (`temp_w`).
+		    
+		2. Calculate the new proposed $b$ and store it in a temporary variable (`temp_b`).
+		    
+		    - _Crucial:_ Both calculations use the **original** $w$ and $b$.
+		        
+		3. Only after calculating both, update $w$ and $b$ with the values in the temporary variables.
+
+#### Gradient Descent Intuition
+
+![Gradient Descent Intuition](./images/18-gradient-descent-intuition.png)
+
+
+The Derivative as Slope
+
+The derivative ($\frac{d}{dw}$) at any point on the cost function curve can be visualized as the **slope of the tangent line** (a line that just touches the curve at that specific point).
+
+- **Positive Slope:** If the tangent line points **up and to the right**, the derivative is a **positive number**. In calculus, when the output increases as the input increases, the slope is **positive**.
+    
+    - **The Math:** $w = w - (\text{positive } \alpha) \times (\text{positive derivative})$.
+        
+    - **The Result:** $w$ decreases (moves to the left). This moves the model toward the minimum at the bottom of the "valley."
+        
+- **Negative Slope:** If the tangent line points **down and to the right**, the derivative is a **negative number**. In calculus, when the output decreases as the input increases, the slope is **negative**.
+    
+    - **The Math:** $w = w - (\text{positive } \alpha) \times (\text{negative derivative})$.
+        
+    - **The Result:** Subtracting a negative is the same as adding ($w + \dots$). Therefore, $w$ increases (moves to the right). This also moves the model toward the minimum.
+        
+Why the Derivative Works
+
+Regardless of where you start on the curve, the math of the derivative ensures you always move in the correct direction:
+
+- Starting too far to the **right**? The positive slope pushes you **left**.
+    
+- Starting too far to the **left**? The negative slope pushes you **right**.
+    
+Key Takeaways
+
+- **Directional Control:** The derivative term's primary job is to tell the algorithm whether to increase or decrease $w$ to lower the cost $J$.
+    
+- **Simplification:** While experts might call this a "partial derivative" in a multi-parameter model, the core logic remains the same: find the slope and move in the opposite direction.
+
+#### Learning Rate
+
+The Impact of the Learning Rate ($\alpha$)
+
+The choice of $\alpha$ determines the size of the steps the algorithm takes. Selecting an inappropriate value leads to two major problems:
+
+- **$\alpha$ is too small:** The algorithm will function correctly but will be **extremely slow**. It takes minuscule "baby steps" and requires a massive number of iterations to reach the minimum.
+    
+- **$\alpha$ is too large:** The algorithm may **overshoot** the minimum, jumping from one side of the valley to the other. Instead of settling at the bottom, the cost $J$ can actually increase with each step, causing the algorithm to **diverge** (fail to find a solution).
+
+![Learning Rate](./images/19-learning-rate.png)
+
+
+Behavior at the Minimum
+
+A common question is what happens when you actually reach the bottom of the "valley."
+
+- **The Math:** At a local minimum, the tangent line is flat, meaning the **derivative is zero** ($\frac{d}{dw}J(w) = 0$).
+    
+- **The Update:** The equation becomes $w = w - \alpha(0)$.
+    
+- **The Result:** $w$ remains unchanged. Once gradient descent reaches a minimum, it stays there automatically, even if you continue to run the algorithm.
+
+![Stuck at Mininma](./images/20-stuck-at-minima.png)
+
+Automatic Step-Size Adjustment
+
+Interestingly, you do not need to change $\alpha$ as you get closer to the minimum. Gradient descent takes **automatically smaller steps** as it approaches the bottom.
+
+1. **Far from minimum:** The slope is steep (large derivative), so the step $(\alpha \times \text{slope})$ is large.
+    
+2. **Near minimum:** The slope becomes shallower (small derivative), so the step $(\alpha \times \text{slope})$ naturally becomes smaller.
+
+#### Gradient Descent for Linear Regression
+
+![Gradient for Linear Regression](./images/21-gd-for-linear-regression.png)
+
+The Gradient Descent Update Formulas
+
+By applying calculus (specifically partial derivatives) to the cost function $J(w, b)$, we get the specific update rules for linear regression.
+
+- For $w$:
+    
+    $$w = w - \alpha \frac{1}{m} \sum_{i=1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)}) x^{(i)}$$
+    
+- For $b$:
+    
+    $$b = b - \alpha \frac{1}{m} \sum_{i=1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})$$
+    
+
+**The Calculus "Trick":** You may have noticed a $\frac{1}{2}$ in the original cost function. This was placed there specifically so that when you take the derivative, the $2$ from the exponent cancels out, leaving the clean formulas shown above.
+
+Global vs. Local Minima
+
+![Gradient Descent for Linear Regression](./images/22-gd-for-linear-regression.png)
+
+
+A common concern with gradient descent in complex models (like neural networks) is getting stuck in a "local minimum"—a valley that isn't the absolute lowest point.
+
+- **The Good News for Linear Regression:** Because we use the squared error cost function, the resulting shape is always a **convex function**.
+    
+- **What is a Convex Function?** It is a "bowl-shaped" function that is guaranteed to have only **one single minimum** (the global minimum).
+    
+- **The Result:** You don't have to worry about starting in the "wrong" place. As long as your learning rate ($\alpha$) is chosen correctly, gradient descent will always find its way to the absolute best possible $w$ and $b$.
+    
+#### Running Gradient Descent
+
+The Algorithm in Action
+
+- **Initialization:** While $w$ and $b$ are often started at $0$, the example starts with a poor fit ($w = -0.1$, $b = 900$).
+    
+- **The Trajectory:** As gradient descent runs, you can watch the parameters "walk" across the **contour plot** toward the center.
+    
+- **Simultaneous Improvement:** On the data plot, the straight line rotates and shifts with every step, getting closer to the actual data points until it reaches the **global minimum**.
+    
+- **Outcome:** Once at the minimum, you have a finalized model $f(x)$ that can predict values for new inputs (e.g., estimating a 1250 sq. ft. house at $\$250,000$).
+
+![Running Gradient Descent](./images/23-running-gd.png)
+
+What is "Batch" Gradient Descent?
+
+The specific version of gradient descent covered here is called **Batch Gradient Descent**.
+
+- **Definition:** On every single update step, the algorithm looks at **all** $m$ training examples.
+    
+- **The Calculation:** The "batch" refers to the entire set of data used to calculate the summation ($\sum_{i=1}^{m}$) in the derivative terms.
+    
+- **Alternative Versions:** While other versions exist that look at only small subsets of data (to save computing power on massive datasets), Batch Gradient Descent is the standard approach for basic linear regression.
+    
+
+![Batch Gradient Descent](./images/24-batch-gradient-descent.png)
 
