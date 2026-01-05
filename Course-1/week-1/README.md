@@ -34,9 +34,9 @@ The concept is best illustrated by Arthur Samuel’s 1950s checkers program:
 
 	![Machine Learning Algorithms](./images/01-ml-algorithms.png)
 
-- **The "Tools vs. Skills" Philosophy:** Knowing the algorithms (the tools) is not enough. Just as having a hammer doesn't make you a carpenter, knowing an algorithm doesn't mean you know how to build a functioning system.
-    
-- **Focus on Practical Application:** A major goal of the course is to teach **best practices**. This helps avoid the common mistake of spending months on an approach that is destined to fail.
+**The "Tools vs. Skills" Philosophy:** Knowing the algorithms (the tools) is not enough. Just as having a hammer doesn't make you a carpenter, knowing an algorithm doesn't mean you know how to build a functioning system.
+
+**Focus on Practical Application:** A major goal of the course is to teach **best practices**. This helps avoid the common mistake of spending months on an approach that is destined to fail.
 
 #### Supervised Learning
 
@@ -204,70 +204,72 @@ The concept is best illustrated by Arthur Samuel’s 1950s checkers program:
 
 #### Cost Function
 
-- The Cost Function
+The Cost Function
 
-	- The **Cost Function** is a mathematical formula used to evaluate the model's performance. Its primary role is to measure **how well the model is doing** by calculating the difference between the predicted values and the actual "right answers." 
-	- This serves as a guide to help the model "do better" by minimizing errors.
+- The **Cost Function** is a mathematical formula used to evaluate the model's performance. Its primary role is to measure **how well the model is doing** by calculating the difference between the predicted values and the actual "right answers." 
 
-- The Model Equation
+- This serves as a guide to help the model "do better" by minimizing errors.
 
-	- The linear regression model is expressed as a linear function:
+The Model Equation
+
+- The linear regression model is expressed as a linear function:
 
 $$f_{w,b}(x) = wx + b$$
 
-- Key Terminology: Parameters
+Key Terminology: Parameters
 
-	- The variables $w$ and $b$ are the **parameters** of the model. These are the "knobs" or variables that you adjust during the training process to improve accuracy.
+- The variables $w$ and $b$ are the **parameters** of the model. These are the "knobs" or variables that you adjust during the training process to improve accuracy.
 
-	- **$w$ (Weight):** Also known as a coefficient.
-    
-	- **$b$ (Bias):** Often referred to alongside $w$ as the parameters of the model.
+- **$w$ (Weight):** Also known as a coefficient.
+
+- **$b$ (Bias):** Often referred to alongside $w$ as the parameters of the model.
 
 ![Cost Function](./images/09-cost-function.png)
 
-- Key Notation
+Key Notation
 
-	- **$x^{(i)}, y^{(i)}$**: The actual data (input and target) for the $i^{th}$ example.
-	    
-	- **$\hat{y}^{(i)}$ (y-hat)**: The **prediction** made by the model for the $i^{th}$ example ($f_{w,b}(x^{(i)})$).
-	    
-	- **$m$**: The total number of training examples.
+- **$x^{(i)}, y^{(i)}$**: The actual data (input and target) for the $i^{th}$ example.
+	
+- **$\hat{y}^{(i)}$ (y-hat)**: The **prediction** made by the model for the $i^{th}$ example ($f_{w,b}(x^{(i)})$).
+	
+- **$m$**: The total number of training examples.
 
-- Defining the Cost Function ($J$) 
-	- To measure how "wrong" the model is, we use the **Squared Error Cost Function**, denoted as $J(w, b)$.
+Defining the Cost Function ($J$) 
+- To measure how "wrong" the model is, we use the **Squared Error Cost Function**, denoted as $J(w, b)$.
 
-	The Formula:
+- The Formula:
 
 $$J(w, b) = \frac{1}{2m} \sum_{i=1}^{m} (f_{w,b}(x^{(i)}) - y^{(i)})^2$$
 
-	- **Error:** The difference between the prediction and the actual target $(\hat{y} - y)$.
-    
-	- **Squared Error:** We square the error so that all deviations are positive and larger errors are penalized more heavily.
-    
-	- **Mean (Average):** We divide by $m$ so the cost doesn't grow simply because we added more data.
-    
-	- **The $\frac{1}{2}$ Factor:** A convention used to make future calculus (derivatives) cleaner; it does not change the optimal values of $w$ and $b$.
+- **Error:** The difference between the prediction and the actual target $(\hat{y} - y)$.
+
+- **Squared Error:** We square the error so that all deviations are positive and larger errors are penalized more heavily.
+
+- **Mean (Average):** We divide by $m$ so the cost doesn't grow simply because we added more data.
+
+- **The $\frac{1}{2}$ Factor:** A convention used to make future calculus (derivatives) cleaner; it does not change the optimal values of $w$ and $b$.
 
 
 ![Cost Function](./images/10-cost-function.png)
 
-- The Objective
+The Objective
 
-	- The "best" model is the one where the cost $J(w, b)$ is at its **minimum**. 
-	- A small $J$ means the predictions are very close to the actual data, while a large $J$ means the line is a poor fit.
+- The "best" model is the one where the cost $J(w, b)$ is at its **minimum**. 
+
+- A small $J$ means the predictions are very close to the actual data, while a large $J$ means the line is a poor fit.
 
 
 #### Cost Function Intuition
 
-- The Simplified Model
+The Simplified Model
 
-	To visualize the concept in 2D, the parameter $b$ is set to $0$.
+To visualize the concept in 2D, the parameter $b$ is set to $0$.
+
+- **Equation:** $f_w(x) = wx$
 	
-	- **Equation:** $f_w(x) = wx$
-	    
-	- **Visual:** This forces the line to always pass through the **origin (0,0)**.
-	    
-	- **Goal:** Find the single value of $w$ that minimizes the cost function $J(w)$.
+- **Visual:** This forces the line to always pass through the **origin (0,0)**.
+	
+- **Goal:** Find the single value of $w$ that minimizes the cost function $J(w)$.
 
 ![Cost Function Intuition](./images/11-cost-function-intuition.png)
 
@@ -321,70 +323,69 @@ The Contour Plot
 
 #### Gradient Descent
 
-- What is Gradient Descent?
+What is Gradient Descent?
 
-	- **The Purpose:** It is a systematic, automated way to find the values of parameters (like $w$ and $b$) that result in the smallest possible cost $J$.
-	    
-	- **Versatility:** While we use it for linear regression, it can be applied to any function to find its minimum, even models with hundreds or millions of parameters (2$w_1, w_2, ... w_n$).
+- **The Purpose:** It is a systematic, automated way to find the values of parameters (like $w$ and $b$) that result in the smallest possible cost $J$.
+	
+- **Versatility:** While we use it for linear regression, it can be applied to any function to find its minimum, even models with hundreds or millions of parameters (2$w_1, w_2, ... w_n$).
 
 ![Gradient Descent](./images/16-gradient-descent.png)
 
-- The "Hill Climbing" (or Downhill) Analogy
-	
-	- **The Starting Point:** You begin at a random point (commonly by setting $w=0$ and $b=0$).
-	    
-	- **The Direction:** You look $360^\circ$ around you and determine which direction to take a "baby step" to go **downhill as quickly as possible**. This is mathematically known as the **direction of steepest descent**.
-	    
-	- **The Iteration:** You repeat this process—stepping, looking around, and stepping again—until you reach the bottom of a valley.
+The "Hill Climbing" (or Downhill) Analogy
+
+- **The Starting Point:** You begin at a random point (commonly by setting $w=0$ and $b=0$).
+
+- **The Direction:** You look $360^\circ$ around you and determine which direction to take a "baby step" to go **downhill as quickly as possible**. This is mathematically known as the **direction of steepest descent**.
+
+- **The Iteration:** You repeat this process—stepping, looking around, and stepping again—until you reach the bottom of a valley.
 
 ![Gradient Descent](./images/17-gradient-descent.png)
 
-- Local Minima: A Key Property
+Local Minima: A Key Property
 
-	- Unlike the "perfect bowl" of linear regression, more complex models (like neural networks) may have many valleys.
+- Unlike the "perfect bowl" of linear regression, more complex models (like neural networks) may have many valleys.
 
-		- **Sensitivity to Starting Points:** If you start a few steps to the right or left, you might end up in a completely different valley.
-		    
-		- **Local Minimum:** Each of these valleys is called a **local minimum**. Once the algorithm settles at the bottom of one valley, it generally cannot "jump out" to find a different, potentially deeper one.
+- **Sensitivity to Starting Points:** If you start a few steps to the right or left, you might end up in a completely different valley.
+
+- **Local Minimum:** Each of these valleys is called a **local minimum**. Once the algorithm settles at the bottom of one valley, it generally cannot "jump out" to find a different, potentially deeper one.
 
 #### Implementing Gradient Descent
 
-- The Gradient Descent Algorithm
+The Gradient Descent Algorithm
 
-	- The update rules for the parameters $w$ and $b$ are defined as:
+The update rules for the parameters $w$ and $b$ are defined as:
 
 $$w = w - \alpha \frac{d}{dw} J(w,b)$$
 
 $$b = b - \alpha \frac{d}{db} J(w,b)$$
 
-	**$=$ (Assignment Operator):** In this context, $=$ means "update the value of the variable on the left with the result of the calculation on the right" (similar to `a = a + 1` in programming).
+$=$ (Assignment Operator): In this context, $=$ means "update the value of the variable on the left with the result of the calculation on the right" (similar to `a = a + 1` in programming).
 
-- Key Components of the Equation
+Key Components of the Equation
 
-	- **$\alpha$ (Learning Rate):** A small positive number (e.g., $0.01$) that controls **how big of a step** you take.
-	    
-	    - Large $\alpha$: Aggressive, huge steps.
-	        
-	    - Small $\alpha$: Tiny baby steps.
-	        
-	- **$\frac{d}{dw}$ and $\frac{d}{db}$ (Derivative Terms):** These terms from calculus tell the algorithm the **direction** of the steepest descent. They determine which way to move to reduce the cost $J$ most quickly.
-	    
-	- **Convergence:** The algorithm "converges" when you reach a minimum where the values of $w$ and $b$ stop changing significantly with each step.
+- **$\alpha$ (Learning Rate):** A small positive number (e.g., $0.01$) that controls **how big of a step** you take.
+
+- Large $\alpha$: Aggressive, huge steps.
+
+- Small $\alpha$: Tiny baby steps.
+
+- **$\frac{d}{dw}$ and $\frac{d}{db}$ (Derivative Terms):** These terms from calculus tell the algorithm the **direction** of the steepest descent. They determine which way to move to reduce the cost $J$ most quickly.
+
+- **Convergence:** The algorithm "converges" when you reach a minimum where the values of $w$ and $b$ stop changing significantly with each step.
     
+The "Simultaneous Update" Rule
 
-- The "Simultaneous Update" Rule
+- A crucial detail in implementing gradient descent correctly is updating both parameters at the same time using the values from the _previous_ step.
 
-	- A crucial detail in implementing gradient descent correctly is updating both parameters at the same time using the values from the _previous_ step.
+- **Correct Method (Simultaneous):**
+
+	1. Calculate the new proposed $w$ and store it in a temporary variable (`temp_w`).
 	
-	- **Correct Method (Simultaneous):**
-		
-		1. Calculate the new proposed $w$ and store it in a temporary variable (`temp_w`).
-		    
-		2. Calculate the new proposed $b$ and store it in a temporary variable (`temp_b`).
-		    
-		    - _Crucial:_ Both calculations use the **original** $w$ and $b$.
-		        
-		3. Only after calculating both, update $w$ and $b$ with the values in the temporary variables.
+	2. Calculate the new proposed $b$ and store it in a temporary variable (`temp_b`).
+	
+		- _Crucial:_ Both calculations use the **original** $w$ and $b$.
+	
+	3. Only after calculating both, update $w$ and $b$ with the values in the temporary variables.
 
 #### Gradient Descent Intuition
 
