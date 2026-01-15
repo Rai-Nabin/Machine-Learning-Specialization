@@ -153,6 +153,7 @@ To fix this, we define a different "loss" for individual training examples ($L(f
 |---|---|---|
 |**$y = 1$**|$-\log(f(x))$|As the prediction $f(x)$ approaches 1, loss goes to 0. If it approaches 0, loss goes to infinity.|
 |**$y = 0$**|$-\log(1 - f(x))$|As the prediction $f(x)$ approaches 0, loss goes to 0. If it approaches 1, loss goes to infinity.|
+
 ![Logistic Loss](./images/09-logistic-loss.png)
 
 **Why This Works**
